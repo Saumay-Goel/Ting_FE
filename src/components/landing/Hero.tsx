@@ -4,10 +4,9 @@ import Image from "next/image";
 export default function Hero() {
   return (
     <section className="mx-auto grid max-w-[1280px] items-center gap-12 px-6 py-24 md:grid-cols-[1fr_1.1fr] md:px-10 md:py-32">
-      {/* Left: copy */}
       <div>
         <p className="mb-8 text-[15px] font-semibold text-[#6B6357]">
-          AI on-call for AWS teams
+          AI on-call for AWS
         </p>
 
         <h1 className="mb-8 font-[family-name:var(--font-display)] text-[52px] font-bold leading-[1.04] tracking-[-0.03em] md:text-[72px]">

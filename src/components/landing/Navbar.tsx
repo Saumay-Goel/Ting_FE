@@ -1,5 +1,5 @@
 import Link from "next/link";
-
+import Image from "next/image";
 function BellMark() {
   return (
     <span className="grid h-[38px] w-[38px] place-items-center rounded-[11px] bg-[#F5A623] shadow-[0_0_0_1px_#1A1714,2px_2px_0_#1A1714]">
@@ -41,8 +41,7 @@ export default function Navbar() {
           href="/"
           className="flex items-center gap-[11px] font-[family-name:var(--font-display)] text-[24px] font-bold tracking-tight"
         >
-          <BellMark />
-          Tinglr
+          <Image src="/Tinglr.svg" width={100} height={70} alt="Tinglr" />
         </Link>
 
         <div className="mx-auto hidden items-center gap-9 text-[15.5px] font-semibold text-[#3a352d] md:flex">
