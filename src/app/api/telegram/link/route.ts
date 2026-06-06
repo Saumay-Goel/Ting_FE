@@ -1,16 +1,12 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { backendFetch } from "@/lib/backend";
 
-export async function POST(req: NextRequest) {
-  const body = await req.json();
-  const res = await backendFetch("/aws/role-arn", {
-    method: "POST",
-    body: JSON.stringify(body),
-  });
+export async function GET() {
+  const res = await backendFetch("/telegram/link");
   const data = await res.json().catch(() => ({}));
   if (!res.ok) {
     return NextResponse.json(
-      { error: data.error ?? "Couldn't save role ARN" },
+      { error: data.error ?? "Couldn't create Telegram link" },
       { status: res.status },
     );
   }
