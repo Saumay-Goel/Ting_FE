@@ -1,15 +1,24 @@
+import { redirect } from "next/navigation";
 import Link from "next/link";
+import { backendFetch } from "@/lib/backend";
 
-export default function AuthLayout({
+export default async function AuthLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const res = await backendFetch("/auth/me");
+  if (res.ok) {
+    const data = await res.json().catch(() => ({}));
+    if (data?.user) {
+      redirect("/dashboard");
+    }
+  }
+
   return (
     <div className="flex min-h-screen flex-col bg-[#1A1714] lg:flex-row">
       {/* LEFT — brand panel */}
       <div className="relative hidden flex-1 flex-col justify-between overflow-hidden p-12 lg:flex">
-        {/* subtle code-symbol texture */}
         <div
           className="pointer-events-none absolute inset-0 opacity-[0.04]"
           style={{
@@ -54,7 +63,6 @@ export default function AuthLayout({
         </div>
       </div>
 
-      {/* RIGHT — form */}
       <div className="flex flex-1 items-center justify-center bg-[#FBF6EC] p-6 lg:p-12">
         <div className="w-full max-w-[420px]">{children}</div>
       </div>
